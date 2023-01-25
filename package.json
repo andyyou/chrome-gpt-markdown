@@ -1,0 +1,15 @@
+{
+  "name": "gpt-markdown",
+  "version": "0.1.0",
+  "description": "Export GPT conversation to markdown",
+  "main": "content-script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "GPT",
+    "Markdown"
+  ],
+  "author": "andyyou",
+  "license": "ISC"
+}

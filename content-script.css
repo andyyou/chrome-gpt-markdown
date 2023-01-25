@@ -1,0 +1,23 @@
+#gpt-markdown-export-button {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  text-align: center;
+  background-color: transparent;
+  color: #333;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+}
+#gpt-markdown-export-button:hover {
+  color: black;
+}
+@media (prefers-color-scheme: dark) {
+  #gpt-markdown-export-button {
+    color: #eee;
+  }
+  #gpt-markdown-export-button:hover {
+    color: #fff;
+  }
+}
