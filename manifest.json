@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "GPT Markdown",
   "description": "Export GPT conversation to markdown",
-  "version": "0.1",
+  "version": "0.2.0",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -13,9 +13,7 @@
     {
       "js": ["turndown.js", "content-script.js"],
       "css": ["content-script.css"],
-      "matches": [
-        "https://chat.openai.com/chat/*"
-      ]
+      "matches": ["https://chat.openai.com/chat/*"]
     }
   ]
 }
