@@ -11,5 +11,8 @@
     "Markdown"
   ],
   "author": "andyyou",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "turndown": "^7.1.2"
+  }
 }

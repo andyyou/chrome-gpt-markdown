@@ -9,6 +9,12 @@ function main() {
     e.stopPropagation();
 
     const turndownService = new TurndownService();
+    turndownService.addRule("coder", {
+      filter: "code",
+      replacement: function (content, node, options) {
+        return options.fence + content + options.fence;
+      },
+    });
     const html = mainElement.innerHTML;
     const markdown = turndownService.turndown(html);
 
@@ -33,7 +39,8 @@ function main() {
   btnElement.id = "gpt-markdown-export-button";
   btnElement.textContent = "Export Markdown";
   btnElement.addEventListener("click", handleClick);
-  mainElement.appendChild(btnElement);
+  const formElement = document.querySelector("form > div > div");
+  formElement.appendChild(btnElement);
 }
 
 function observe(cb) {

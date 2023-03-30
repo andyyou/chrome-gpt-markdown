@@ -1,23 +1,40 @@
-#gpt-markdown-export-button {
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, .3);
-  text-align: center;
-  background-color: transparent;
-  color: #333;
-  position: fixed;
-  top: 10px;
-  right: 20px;
+.light #gpt-markdown-export-button {
+  cursor: pointer;
+  pointer-events: auto;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: rgba(255,255,255,1);
+  border-color: rgba(0,0,0,.1);
+  border-width: 1px;
+  color: rgba(64,65,79,1);
+  font-size: .875rem;
+  line-height: 1.25rem;
 }
-#gpt-markdown-export-button:hover {
-  color: black;
+.light #gpt-markdown-export-button:hover {
+  background-color: rgba(236,236,241,1);
 }
-@media (prefers-color-scheme: dark) {
-  #gpt-markdown-export-button {
-    color: #eee;
-  }
-  #gpt-markdown-export-button:hover {
-    color: #fff;
-  }
+
+.dark #gpt-markdown-export-button {
+  cursor: pointer;
+  pointer-events: auto;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: .875rem;
+  line-height: 1.25rem;
+  background-color: rgba(52,53,65,1);
+  border: 1px solid #565869;
+  color: rgba(217,217,227,1);
+}
+.dark #gpt-markdown-export-button:hover {
+  background-color: rgba(64,65,79,1);
+  border-color: rgba(86,88,105,1);
+  color: rgba(217,217,227,1);
 }
