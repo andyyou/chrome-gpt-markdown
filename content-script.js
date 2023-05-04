@@ -1,5 +1,5 @@
 function main() {
-  if (!window.location.href.startsWith("https://chat.openai.com/chat")) {
+  if (!window.location.href.startsWith("https://chat.openai.com")) {
     return;
   }
 
@@ -8,15 +8,22 @@ function main() {
   function handleClick(e) {
     e.stopPropagation();
 
-    const turndownService = new TurndownService();
-    turndownService.addRule("coder", {
-      filter: "code",
-      replacement: function (content, node, options) {
-        return options.fence + content + options.fence;
+    const turndownService = new TurndownService({
+      codeBlockStyle: "fenced",
+    });
+    turndownService.addRule("codeBlock", {
+      filter: ["pre"],
+      replacement: (content, node) => {
+        const codeContent = node.querySelector("code")?.textContent || "";
+        const language = node.querySelector("span")?.textContent || "plaintext";
+        return `\n\`\`\`${language}\n${codeContent}\n\`\`\`\n`;
       },
     });
     const html = mainElement.innerHTML;
-    const markdown = turndownService.turndown(html);
+    let markdown = turndownService.turndown(html);
+    markdown = markdown.replace(/\d+\s*\/\s*\d+/g, "");
+    markdown = markdown.replace("ChatGPTChatGPT", "");
+    markdown = markdown.replace(/!\[(.*?)\]\((.*?)\)/g, "");
 
     const blob = new Blob([markdown], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
@@ -39,7 +46,8 @@ function main() {
   btnElement.id = "gpt-markdown-export-button";
   btnElement.textContent = "Export Markdown";
   btnElement.addEventListener("click", handleClick);
-  const formElement = document.querySelector("form > div > div");
+  const formElement = document.querySelector("form > div > div > div");
+  console.log(formElement);
   formElement.appendChild(btnElement);
 }
 
@@ -52,6 +60,12 @@ function observe(cb) {
     subtree: false,
   });
 }
-
-main();
 observe(main);
+window.addEventListener(
+  "load",
+  function load(event) {
+    window.removeEventListener("load", load, false);
+    main();
+  },
+  false
+);
